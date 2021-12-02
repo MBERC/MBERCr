@@ -70,3 +70,32 @@ Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
   grDevices::colorRampPalette(pal, ...)
 
   }
+
+Amelia_colours <- c(
+  `green`        = "#1b9e77",
+  `orange`      = "#d95f02",
+  `purple`       = "#7570b3"
+)
+
+Amelia_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (Amelia_colours)
+
+  Amelia_colours[cols]
+}
+
+Amelia_palettes <- list(
+  `PhD`  = Amelia_cols("green","orange", "purple")
+
+)
+
+Amelia_pal <- function(palette = "PhD", reverse = FALSE, ...) {
+  pal <- Amelia_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  grDevices::colorRampPalette(pal, ...)
+
+}
