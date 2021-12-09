@@ -28,8 +28,19 @@ Bede_colours <- c(
   `Mussels Control` = "#a90000",
   `Orkney RN` = "#56bda2",
   `Orkney RS` = "#dbb13b",
-  `Orkney WC` = "#2494a2"
-  )
+  `Orkney WC` = "#2494a2",
+  `BathyBlue0`="#c6edec",
+  `BathyBlue1`="#9ddee7",
+  `BathyBlue2`="#72d0e1",
+  `BathyBlue3`="#48b5d2",
+  `BathyBlue4`="#218eb7",
+  `BathyBlue5`="#1074a6",
+  `BathyBlue6`="#054780",
+  `BathyBlue7`="#042f66",
+  `BathyBlue8`="#22496d",
+  `BathyBlue9`="#5e24d6",
+  `BathyBlue10`="#19243b"
+    )
 
 Bede_cols <- function(...) {
   cols <- c(...)
@@ -57,9 +68,12 @@ Bede_palettes <- list(
 
   `PhD` = Bede_cols("dark cyan", "light grey", "dark gold"),
 
-  `Orkney` = Bede_cols("Orkney RN", "Orkney RS", "Orkney WC")
+  `Orkney` = Bede_cols("Orkney RN", "Orkney RS", "Orkney WC"),
 
-
+  `Bathy_Blues`= Bede_cols("BathyBlue0","BathyBlue1","BathyBlue2",
+                           "BathyBlue3","BathyBlue4","BathyBlue5",
+                           "BathyBlue6","BathyBlue7","BathyBlue8",
+                           "BathyBlue9","BathyBlue10")
 )
 
 Bede_pal <- function(palette = "main", reverse = FALSE, ...) {
@@ -99,3 +113,32 @@ Amelia_pal <- function(palette = "PhD", reverse = FALSE, ...) {
   grDevices::colorRampPalette(pal, ...)
 
 }
+
+Clara_colours <- c(
+  `green`        = "#1b9e77",
+  `orange`      = "#d95f02",
+  `purple`       = "#7570b3"
+)
+
+Clara_cols <- function(...) {
+  cols <- c(...)
+
+  if (is.null(cols))
+    return (Clara_colours)
+
+  Clara_colours[cols]
+}
+
+Clara_palettes <- list(
+  `PhD`  = Clara_cols("green","orange", "purple")
+)
+
+Clara_pal <- function(palette = "PhD", reverse = FALSE, ...) {
+  pal <- Clara_palettes[[palette]]
+
+  if (reverse) pal <- rev(pal)
+
+  grDevices::colorRampPalette(pal, ...)
+
+}
+
