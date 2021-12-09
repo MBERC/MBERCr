@@ -109,7 +109,7 @@ head(df2)
 #> # … with 1 more variable: year <int>
 ```
 
-## Model Assessments
+## Model Assessments <img src="man/figures/Penguin.png" width="200px" height="200px" align="right" style="padding-right:10px;background-color:white;" />
 
 Often we use regression models to assess data. If we want to check the
 assumptions of these models the base r functions suck. There are good
@@ -118,21 +118,21 @@ packages to check these assumptions () but we also have another here.
 ``` r
 mod1<-lm(body_mass_g~.,data=df2)
 
-Model_Check(mod1)
+MBERCr::Model_Check(mod1)
 #> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-model check-1.png" width="100%" />
 
 ## Data Visualisation
 
 In MBERCr we have many functions to make figures look nicer (*we
-thing*). Lets do a basic plot.
+think*). Lets do a basic plot.
 
 ``` r
 ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
@@ -140,126 +140,161 @@ ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
 #> `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-base plot-1.png" width="100%" />
 
 Now lets make the theme look better.
 
 ``` r
 themeplot1<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="Species")+
-  theme_Bede()
+  MBERCr::theme_Bede()
 
 themeplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="Species")+
-  theme_Amelia() 
+  MBERCr::theme_Amelia() 
 
-themeplot1+themeplot2+plot_layout(guides="collect")
+themeplot1+themeplot2&
+  theme(legend.position = c(0.2,0.8))
 #> `geom_smooth()` using formula 'y ~ x'
 #> `geom_smooth()` using formula 'y ~ x'
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-theme use-1.png" width="100%" />
 
 Okay that is better but lets make the colours nicer.
 
 ``` r
 colourplot1<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="main",
        title="Main Palette from Bede")+
-  theme_Bede()+
-  scale_colour_Bede("main")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Bede("main")
 
 colourplot2<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="mixed",
        title="Mixed Palette from Bede")+
-  theme_Bede()+
-  scale_colour_Bede("mixed")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Bede("mixed")
 
 colourplot3<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="cool",
        title="Cool Palette from Bede")+
-  theme_Bede()+
-  scale_colour_Bede("cool")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Bede("cool")
 
 colourplot4<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="hot",
        title="Hot Palette from Bede")+
-  theme_Bede()+
-  scale_colour_Bede("hot")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Bede("hot")
 
 colourplot5<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="PhD Bede",
        title="PhD Palette from Bede")+
-  theme_Bede()+
-  scale_colour_Bede("PhD")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Bede("PhD")
 
 colourplot6<-ggplot(data = df2, aes(x = flipper_length_mm, y = body_mass_g)) +
   geom_point(aes(color = species),
-             size = 2)+
+             size = 1)+
   geom_smooth(aes(color=species),method = "lm")+
   labs(x="Flipper Length (mm)",
        y="Body Mass (g)",
        color="PhD Amelia",
        title="PhD Palette from Amelia")+
-  theme_Bede()+
-  scale_colour_Amelia("PhD")
+  MBERCr::theme_Bede()+
+  MBERCr::scale_colour_Amelia("PhD")
 
 
 colourplot1+colourplot2+
   colourplot3+colourplot4+
-  colourplot5+colourplot6+plot_layout(guides="collect")
+  colourplot5+colourplot6 &
+  theme(legend.position = c(0.15,0.7))
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-colour use-1.png" width="100%" />
 
-There also a few colours palettes for gradients.
+<img src="man/figures/kiwi.png" width="200px" height="200px" align="left" style="padding-right:10px;background-color:white;" />
+
+There also a few colours palettes for gradients by putting
+discrete=FALSE.
 
 ``` r
-ggplot()+
+map1<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  scale_colour_Bede(name="Depth",'Bathy_Blues',discrete=FALSE,reverse=TRUE)+
-  theme_Bede()+
+  MBERCr::scale_colour_Bede(name="Depth (m) Bathy_Blues Pallette",'Bathy_Blues',
+                            discrete=FALSE,reverse=TRUE)+
+  MBERCr::theme_Bede()+
   labs(x="Longitude",
        y="Latitude")
+
+map2<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  MBERCr::scale_colour_Bede(name="Depth (m) Mixed Pallette",'mixed',discrete=FALSE)+
+  MBERCr::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+map3<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  MBERCr::scale_colour_Bede(name="Depth (m) PhD Pallette",'PhD',discrete=FALSE)+
+  MBERCr::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+map4<-ggplot()+
+  geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
+  geom_polygon(data = nz, aes(x = long, y = lat, group = group),
+               fill = "forestgreen", colour = "black",alpha=0.4)+
+  MBERCr::scale_colour_Bede(name="Depth (m) Main Pallette",'main',discrete=FALSE)+
+  MBERCr::theme_Bede()+
+  labs(x="Longitude",
+       y="Latitude")
+
+(map1+map2)/(map3+map4)
 ```
 
-<img src="man/figures/README-example mapping-1.png" width="100%" />
+<img src="man/figures/README-mapping-1.png" width="100%" />
 
 ## Fin. <img src="man/figures/logo2.png" width="200px" height="200px" align="right" style="padding-right:10px;background-color:white;" />
