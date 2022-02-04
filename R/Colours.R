@@ -114,9 +114,22 @@ Amelia_pal <- function(palette = "PhD", reverse = FALSE, ...) {
 }
 
 Clara_colours <- c(
-  `green`        = "#1b9e77",
-  `orange`      = "#d95f02",
-  `purple`       = "#7570b3"
+  `Pal1_1`        = "#2CCD1B",
+  `Pal1_2`      = "#AFEEA8",
+  `Pal1_3`        = "#5FD952",
+  `Pal1_4`      = "#0F9D00",
+  `Pal1_5`        = "#0A6600",
+  `Pal2_1`      = "#FB6521",
+  `Pal2_2`        = "#FFCCB5",
+  `Pal2_3`      = "#FF9261",
+  `Pal2_4`        = "#C03C00",
+  `Pal2_5`      = "#7D2700",
+  `Pal3_1`        = "#ACE0E5",
+  `Pal3_2`      = "#6FC8D0",
+  `Pal3_3`        = "#2EADB8",
+  `Pal3_4`      = "#028A95",
+  `Pal3_5`       = "#01626B",
+  `Pal3_6`       = "#00383D"
 )
 
 Clara_cols <- function(...) {
@@ -129,7 +142,9 @@ Clara_cols <- function(...) {
 }
 
 Clara_palettes <- list(
-  `PhD`  = Clara_cols("green","orange", "purple")
+  `Pal_1`  = Clara_cols("Pal1_1","Pal1_2", "Pal1_3","Pal1_4", "Pal1_5"),
+  `Pal_2`  = Clara_cols("Pal2_1","Pal2_2", "Pal2_3","Pal2_4", "Pal2_5"),
+  `Pal_3`  = Clara_cols("Pal3_1","Pal3_2", "Pal3_3","Pal3_4", "Pal3_5", "Pal3_6")
 )
 
 Clara_pal <- function(palette = "PhD", reverse = FALSE, ...) {
