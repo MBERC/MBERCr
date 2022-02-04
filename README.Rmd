@@ -335,7 +335,7 @@ map8<-ggplot()+
   geom_sf(data=sf_bathy,mapping=aes(colour=layer))+
   geom_polygon(data = nz, aes(x = long, y = lat, group = group),
                fill = "forestgreen", colour = "black",alpha=0.4)+
-  MBERCr::scale_colour_Clara(name="Depth (m) Palk=lette 3 from Clara",
+  MBERCr::scale_colour_Clara(name="Depth (m) Pallette 3 from Clara",
                              'Pal_3',discrete=FALSE)+
   MBERCr::theme_Bede()+
   labs(x="Longitude",
