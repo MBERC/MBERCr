@@ -10,6 +10,19 @@ License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Imports:
-	ggplot2, 
-	cowplot
+Import:
+	ggplot2,
+	cowplot,
+	dplyr,
+	patchwork,
+	purrr,
+	tidyr,
+	magrittr
+Depends:
+	ggplot2,
+	cowplot,
+	dplyr,
+	patchwork,
+	purrr,
+	tidyr,
+	magrittr
